@@ -67,7 +67,8 @@ function isDigit(c) {
   }
 }
 
-function evaluate(expression) {
+function evaluate() {
+  let expression = document.getElementById("texto2").value;
   let tokens = expression.split("");
   let values = new Stack();
   let ops = new Stack();
@@ -91,7 +92,7 @@ function evaluate(expression) {
       else if (tokens[i] == ')') {
           while (ops.peek() != '(')
               values.push(applyOp(ops.pop(), values.pop(), values.pop()));
-          ops.pop();
+          let aux = ops.pop();
       }
 
       else if (tokens[i] == '+' || tokens[i] == '-' ||
